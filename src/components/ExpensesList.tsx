@@ -46,7 +46,7 @@ const ExpenseList = ({ items, onDelete }: Props) => {
             {filteredItems.map((item) => (
               <tr key={item.id}>
                 <td>{item.description}</td>
-                <td>€{item.amount}.00</td>
+                <td>€{item.amount.toFixed(2)}</td>
                 <td>{item.category}</td>
                 <td>
                   <button
@@ -60,7 +60,7 @@ const ExpenseList = ({ items, onDelete }: Props) => {
             ))}
             <tr>
               <th>Total</th>
-              <th>€{total}.00</th>
+              <th>€{total.toFixed(2)}</th>
               <td></td>
               <td></td>
             </tr>

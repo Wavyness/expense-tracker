@@ -16,7 +16,7 @@ const schema = z.object({
     .min(3, { message: "Description should be at least 3 characters long." }),
   amount: z
     .number({ invalid_type_error: "Please enter an amount" })
-    .min(0, { message: "The amount can't be lower €0,-" }),
+    .min(0.01, { message: "The amount can't be lower €0,-" }),
   category: z.string().refine((value) => value !== "None", {
     message: "Please select a category",
   }),
@@ -57,6 +57,7 @@ const Form = ({ onSubmit }: Props) => {
           {...register("amount", { valueAsNumber: true })}
           id="amount"
           type="number"
+          step="0.01"
           className="form-control"
         />
         {errors.amount && (
