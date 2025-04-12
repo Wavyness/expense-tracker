@@ -35,7 +35,8 @@ function App() {
   };
 
   return (
-    <div>
+    <div className="p-5">
+      <h1 className="mb-3">Simple Expenses Tracker</h1>
       <Form onSubmit={addItem}></Form>
       <ExpensesList items={items} onDelete={deleteItem} />
     </div>

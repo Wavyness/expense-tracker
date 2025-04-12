@@ -32,39 +32,41 @@ const ExpenseList = ({ items, onDelete }: Props) => {
         <option value="Utilities">Utilities</option>
         <option value="Entertainment">Entertainment</option>
       </select>
-      <table className="table table-bordered">
-        <thead>
-          <tr>
-            <th>Description</th>
-            <th>Amount</th>
-            <th>Category</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          {filteredItems.map((item) => (
-            <tr key={item.id}>
-              <td>{item.description}</td>
-              <td>€{item.amount}.00</td>
-              <td>{item.category}</td>
-              <td>
-                <button
-                  className="btn btn-outline-danger"
-                  onClick={() => onDelete(item.id)}
-                >
-                  Delete
-                </button>
-              </td>
+      {filteredItems.length > 0 ? (
+        <table className="table table-bordered">
+          <thead>
+            <tr>
+              <th>Description</th>
+              <th>Amount</th>
+              <th>Category</th>
+              <th></th>
             </tr>
-          ))}
-          <tr>
-            <th>Total</th>
-            <th>€{total}.00</th>
-            <td></td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {filteredItems.map((item) => (
+              <tr key={item.id}>
+                <td>{item.description}</td>
+                <td>€{item.amount}.00</td>
+                <td>{item.category}</td>
+                <td>
+                  <button
+                    className="btn btn-outline-danger"
+                    onClick={() => onDelete(item.id)}
+                  >
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            ))}
+            <tr>
+              <th>Total</th>
+              <th>€{total}.00</th>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      ) : null}
     </div>
   );
 };
